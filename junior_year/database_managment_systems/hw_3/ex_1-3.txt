@@ -1,0 +1,153 @@
+Jed Richards
+DBMS Hw03
+10/3/2022
+
+
+Ex 1.) Write the following queries in SQL, using the university schema.
+
+a.) Find the ID and name of each student who has taken at least one Comp. Sci. course; make
+sure there are no duplicate names in the result.
+
+SELECT DISTINCT ID, name
+FROM takes NATURAL JOIN student
+WHERE course_id LIKE "CS-%";
+
+
+b.) Find the ID and name of each student who has not taken any course offered before 2017.
+
+SELECT ID, name
+FROM student
+WHERE ID NOT IN (
+  SELECT ID
+  FROM takes NATURAL JOIN student
+  GROUP BY ID, course_id, sec_id, semester, year
+  HAVING year < 2017
+);
+
+
+c.) For each department, find the maximum salary of instructors in that department. You may
+assume that every department has at least one instructor.
+
+
+SELECT dept_name, max(salary)
+FROM instructor
+GROUP BY dept_name;
+
+
+d.) Find the lowest, across all departments, of the per-department maximum salary computed by
+the preceding query.
+
+SELECT min(salary)
+FROM (
+  SELECT dept_name, max(salary) as salary
+  FROM instructor
+  GROUP BY dept_name) AS maxSalaries;
+
+
+
+-----------------------------------------------------------------------------------------------
+
+
+
+Ex 2.) Consider the insurance database of Figure 3.17, where the primary keys are underlined. 
+Construct the following SQL queries for this relational database.
+
+a.) Find the number of accidents involving a car belonging to a person named “John Smith”.
+
+
+SELECT count(*) AS num_accidents
+FROM participated
+WHERE license_plate IN (
+  SELECT license_plate 
+  FROM owns
+  WHERE driver_id IN (
+    SELECT driver_id 
+    FROM person
+    WHERE name = "John Smith"
+  )
+);
+
+
+b.) Update the damage amount for the car with the license plate “AABB2000” in the accident
+with report number “AR2197” to $3000.
+
+UPDATE participated
+SET damage_amount = 3000
+WHERE license plate = “AABB2000” AND report number = “AR2197”;
+
+
+-----------------------------------------------------------------------------------------------
+
+
+Ex 3.) Consider the bank database of Figure 3.18, where the primary keys are underlined. 
+Construct the following SQL queries for this relational database.
+
+a.) Find each customer who has an account at every branch located in “Brooklyn”.
+
+
+Find count of all branches in Brooklyn
+
+SELECT count(branch_name)
+FROM branch
+WHERE branch_city = "Brooklyn";
+
+
+Find all account_numbers at Brooklyn branches
+
+SELECT account_number
+FROM account NATURAL JOIN branch
+WHERE branch_city = "Brooklyn";
+
+
+Find all distinct ID, branch_name tuples such that the person ID has an account in 
+Brooklyn
+
+SELECT DISTINCT ID, branch_name
+FROM depositor NATURAL JOIN account
+WHERE account_number IN (
+  SELECT account_number
+  FROM account NATURAL JOIN branch
+  WHERE branch_city = "Brooklyn"
+  )
+);
+
+
+Find Distinct ID's with accounts in all Brooklyn Branches using above queries
+
+SELECT ID
+FROM (
+  SELECT DISTINCT ID, branch_name
+  FROM depositor NATURAL JOIN account
+  WHERE account_number IN (
+    SELECT account_number
+    FROM account NATURAL JOIN branch
+    WHERE branch_city = "Brooklyn"
+    )
+  )
+GROUP BY ID
+HAVING count(branch_name) = (
+  SELECT count(branch_name)
+  FROM branch
+  WHERE branch_city = "Brooklyn"
+);
+
+
+b.) Find the total sum of all loan amounts in the bank.
+
+SELECT SUM(amount) as totalLoanAmount
+FROM loan;
+
+
+c.) Find the names of all branches that have assets greater than those of at least one branch
+located in “Brooklyn”.
+
+SELECT branch_name
+FROM branch 
+WHERE assets > (
+  SELECT min(assets)
+  FROM branch
+  WHERE branch_city = "Brooklyn"
+);
+
+
+

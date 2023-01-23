@@ -1,0 +1,50 @@
+create table teams
+ (teamID  varchar(4),
+  teamName  varchar(64) not null,
+  primary key (teamID)
+);
+
+create table events
+ (eventID  varchar(4),
+  eventName  varchar(64) not null,
+  eventYear  numeric(4) check (eventYear >= 2000),
+  primary key (eventID)
+);
+
+create table members
+ (memberID  varchar(4),
+  memberName  varchar(64) not null,
+  teamID  varchar(4) not null,
+  primary key (memberID),
+  foreign key (teamID) references teams(teamID)
+    on delete cascade
+);
+
+create table robots
+ (robotID  varchar(4),
+  robotName  varchar(64) not null,
+  yearBuilt  numeric(4) check (yearBuilt >= 2000),
+  teamID  varchar(4) not null,
+  eventID  varchar(4),
+  primary key (robotID),
+  foreign key (teamID) references teams(teamID)
+    on delete cascade,
+  foreign key (eventID) references events(eventID)
+    on delete set null
+);
+
+insert into teams values ('T1', 'Team8s');
+insert into teams values ('T2', 'Intrepid Builders');
+
+insert into events values ('E1', 'Maze Race', '2022');
+insert into events values ('E2', 'Search, Find, and Deposit', '2022');
+
+insert into members values ('M1', 'Jack Johnson', 'T1');
+insert into members values ('M2', 'John Mayer', 'T1');
+insert into members values ('M3', 'Jerry Garcia', 'T2');
+insert into members values ('M4', 'Phil Lesh', 'T2');
+
+insert into robots values ('R1', 'Path Seeker', '2022', 'T1', 'E1');
+insert into robots values ('R2', 'R2D2', '2022', 'T1', 'E2');
+insert into robots values ('R3', 'Zippy', '2022', 'T2', 'E1');
+insert into robots values ('R4', 'Garbage Truck', '2022', 'T2', 'E2');

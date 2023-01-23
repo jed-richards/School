@@ -1,0 +1,126 @@
+Jed Richards
+DBMS hw_2
+9/18/2022
+
+ex4.)
+
+a.) 
+INSERT INTO course
+VALUES ("CS-001", "Weekly Seminar", "Comp. Sci.", 0);
+
+
+b.) 
+INSERT INTO section
+VALUES ("CS-001", 1, "Fall", 2017, NULL, NULL, NULL);
+
+
+c.) 
+INSERT INTO takes (ID, course_id, sec_id, semester, year, grade)
+SELECT ID, "CS-001", 1, "Fall", 2017, NULL
+FROM student
+WHERE student.dept_name = "Comp. Sci.";
+
+
+
+d.)
+DELETE FROM takes
+WHERE ID = "12345" AND course_id = "CS-001";
+
+
+e.)
+DELETE FROM course
+WHERE course_id = "CS-001";
+
+The above query deletes the existence of the course_id from course, section, and takes 
+with course_id = "CS-001". This happens becuase in the DDL, course_id is a foreign key 
+in both the section and takes tables that point to the course_id in course. The foreign
+keys have "on delete cascade" which deletes all tuples with that course_id in it.
+
+
+f.)
+DELETE FROM takes
+WHERE course_id IN 
+(SELECT course_id
+FROM course
+WHERE title LIKE "%advanced%");
+
+To test this, I inserted a course and section and enrolled a
+student into it using queries:
+
+INSERT INTO course
+VALUES ("CS-500", "Advanced stuff", "Comp. Sci.", 0);
+
+INSERT INTO section
+VALUES ("CS-500", 1, "Fall", 2017, NULL, NULL, NULL);
+
+INSERT INTO takes
+VALUES ("12345", "CS-500", 1, "Fall", 2017, NULL);
+
+----------------------------------------------------------------------------------------------------------
+
+ex5.)
+Write SQL DDL corresponding to the schema in Figure 3.17. Make any reasonable assumptions about data types, 
+and be sure to declare primary and foreignkeys.
+
+create table person
+	(driver_id varchar(5),
+	name varchar(20),
+	address varchar(20),
+	primary key (driver_id)
+	);
+
+create table car
+	(license_plate varchar(10),
+	model varchar(20),
+	year numeric(4,0),
+	primary key (license_plate)
+	);
+
+create table accident
+	(report_number varchar(10),
+	year numeric(4,0),
+	location varchar(20),
+	primary key (report_number)
+	);
+
+create table owns
+	(driver_id varchar(5),
+	license_plate varchar(10),
+	primary key (driver_id, license_plate),
+	foreign key (driver_id) references person(driver_id),
+	foreign key (license_plate) references car(license_plate)
+	);
+
+create table participated 
+	(report_number varchar(10),
+	license_plate varchar(10),
+	driver_id varchar(5),
+	damage_amount numeric(8,2),
+	primary key (report_number, license_plate),
+	foreign key (report_number) references accident(report_number),
+	foreign key (license_plate) references car(license_plate),
+	foreign key (driver_id) references person(driver_id)
+	);
+
+
+----------------------------------------------------------------------------------------------------------
+
+ex6.)
+
+a.) 
+UPDATE works
+SET salary = salary*1.10
+WHERE company_name = "First Bank Corporation";
+
+
+b.)
+UPDATE works
+SET salary = salary*1.10
+WHERE company_name = "First Bank Corporation" AND
+	ID IN (SELECT ID FROM manages);
+
+
+c.) 
+DELETE FROM works
+WHERE company_name = "Small Bank Corporation";
+

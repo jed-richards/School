@@ -1,0 +1,93 @@
+Jed Richards
+DBMS Hw03
+10/7/2022
+
+Ex 6.) DDL Implementation
+
+create table musician
+ (SSN varchar(9),
+  musician_id varchar(5),
+  name varchar(20),
+  salary numeric(8,2),
+  address varchar(20),
+  primary key (SSN),
+  foreign key (address) references home(address)
+ ); 
+
+create table album
+ (album_id varchar(5),
+  title varchar(15),
+  copyright_date varchar(8),
+  format varchar(10),
+  primary key (album_id)
+ ); 
+
+create table instrument
+ (instrument_id varchar(5),
+  name varchar(15),
+  musical_key varchar(10),
+  primary key (instrument_id)
+ ); 
+
+create table song
+ (song_id varchar(5),
+  title varchar(15),
+  author varchar(10),
+  primary key (song_id),
+  foreign key (author) references musician(musician_id)
+ ); 
+
+create table home
+ (address varchar(20),
+  land_line varchar(10),
+  primary key (address, land_line)
+ );
+
+create table plays
+ (musician_id varchar(5),
+  instrument_id varchar(5),
+  primary key (musician_id, instrument_id),
+  foreign key (musician_id) references musician(musician_id),
+  foreign key (instrument_id) references instrument(instrument_id)
+ );
+
+create table includes
+ (song_id varchar(5),
+  instrument_id varchar(5),
+  primary key (song_id, instrument_id),
+  foreign key (song_id) references song(song_id),
+  foreign key (instrument_id) references instrument(instrument_id)
+ );
+
+create table contains
+ (song_id varchar(5),
+  album_id varchar(5),
+  primary key (song_id),
+  foreign key (song_id) references song(song_id),
+  foreign key (album_id) references album(album_id)
+ );
+
+create table produces
+ (album_id varchar(5),
+  musician_id varchar(5),
+  primary key (album_id),
+  foreign key (album_id) references album(album_id),
+  foreign key (musician_id) references musician(musician_id)
+ );
+
+create table performs
+ (musician_id varchar(5),
+  song_id varchar(5),
+  primary key (musician_id, song_id),
+  foreign key (musician_id) references musician(musician_id),
+  foreign key (song_id) references song(song_id)
+ );
+
+create table lives
+ (musician_id varchar(5),
+  address varchar(20),
+  primary key (musician_id, address),
+  foreign key (musician_id) references musician(musician_id),
+  foreign key (address) references home(address)
+ );
+
