@@ -1,0 +1,18 @@
+
+## Notes from python-httpd.py
+
+*** Notes:
+- Take the file with {{sysdate}} and read from it and write to a new file (copy it)
+  and then when we hit {{sysdate}} use time.asctime() and insert this.
+
+- Finally, change path to the new file.
+  self.path = '/new_file.html'
+  SimpleHTTPRequestHandler.do_GET(self)
+
+
+
+if self.path.startswith('/dyn'):
+    # do stuff
+
+else:
+    SimpleHTTPRequestHandler.do_GET(self)
