@@ -20,19 +20,17 @@ class MyHTTPRequestHandler(SimpleHTTPRequestHandler):
 
         if self.path.startswith('/dyn/'):
             file = self.translate_path(self.path)   # does this work??
+
+            '''
+            Try: (test if file exists)
+
+            Except: (if file does not exist return 404 'abort 404')
+            '''
             print(file)
 
             with open(file, 'r') as inf, open('newfile.html', 'w') as outf:
-                #for line in inf:
-                    #if '{{sysdate}}' in line:
-
-                    ###########################################################
-                    # figure out how to only change {{sysdate}} not everything
-                    # on the line
-                    # time.asctime()
-                    ###########################################################
-
                 outf.write(inf.read().replace('{{sysdate}}', time.asctime()))
+
             self.path = '/newfile.html'
             print(self.path)
             print(self)
