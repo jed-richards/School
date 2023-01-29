@@ -23,6 +23,15 @@ class MyHTTPRequestHandler(SimpleHTTPRequestHandler):
         '''
         if self.path.startswith('/dyn/') and self.path != ('/dyn/'):
             file = self.translate_path(self.path)
+        if self.path.startswith('/dyn/'):
+            file = self.translate_path(self.path)   # does this work??
+
+            '''
+            Try: (test if file exists)
+
+            Except: (if file does not exist return 404 'abort 404')
+            '''
+            print(file)
 
             '''
             Open the file at designated path to read and open a newfile to write.
