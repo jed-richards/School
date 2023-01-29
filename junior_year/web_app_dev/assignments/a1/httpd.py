@@ -18,33 +18,28 @@ class MyHTTPRequestHandler(SimpleHTTPRequestHandler):
         print("Serving %s " % self.path)
         print("Serving from %s " % self.translate_path(self.path))
 
-        '''
-        If path starts with /dyn/ then jump in only if the path is not only /dyn/
-        '''
+        # If path starts with /dyn/ then jump in only if the path is not only /dyn/
         if self.path.startswith('/dyn/') and self.path != ('/dyn/'):
+
+            # create file variable as path to file
             file = self.translate_path(self.path)
-        if self.path.startswith('/dyn/'):
-            file = self.translate_path(self.path)   # does this work??
+
+            # split the path and change the file name to 'newfile'
+            sp = file.split('/')
+            sp[-1] = 'newfile.html'
+
+            # finally join the split list seperated by '/' (reconstruct path)
+            newfile = '/'.join(sp)
 
             '''
-            Try: (test if file exists)
-
-            Except: (if file does not exist return 404 'abort 404')
+            Open the file at designated path to read and open newfile to write to.
+            Then copy infile into outfile, replacing '{{sysdate}}' with time.asctime().
             '''
-            print(file)
-
-            '''
-            Open the file at designated path to read and open a newfile to write.
-            Finally, copy infile into outfile, replacing '{{sysdate}}' with 
-            time.asctime().
-            '''
-            with open(file, 'r') as inf, open('newfile.html', 'w') as outf:
+            with open(file, 'r') as inf, open(newfile, 'w') as outf:
                 outf.write(inf.read().replace('{{sysdate}}', time.asctime()))
 
-            '''
-            Now, change path to the newfile and call do_GET on it
-            '''
-            self.path = '/newfile.html'
+            # Now, manually change path to the newfile and call do_GET on it
+            self.path = '/dyn/newfile.html'
 
         SimpleHTTPRequestHandler.do_GET(self)
 
