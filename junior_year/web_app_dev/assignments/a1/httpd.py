@@ -18,25 +18,25 @@ class MyHTTPRequestHandler(SimpleHTTPRequestHandler):
         print("Serving %s " % self.path)
         print("Serving from %s " % self.translate_path(self.path))
 
-        if self.path.startswith('/dyn/'):
-            file = self.translate_path(self.path)   # does this work??
-            print(file)
+        '''
+        If path starts with /dyn/ then jump in only if the path is not only /dyn/
+        '''
+        if self.path.startswith('/dyn/') and self.path != ('/dyn/'):
+            file = self.translate_path(self.path)
 
+            '''
+            Open the file at designated path to read and open a newfile to write.
+            Finally, copy infile into outfile, replacing '{{sysdate}}' with 
+            time.asctime().
+            '''
             with open(file, 'r') as inf, open('newfile.html', 'w') as outf:
-                #for line in inf:
-                    #if '{{sysdate}}' in line:
-
-                    ###########################################################
-                    # figure out how to only change {{sysdate}} not everything
-                    # on the line
-                    # time.asctime()
-                    ###########################################################
-
                 outf.write(inf.read().replace('{{sysdate}}', time.asctime()))
+
+            '''
+            Now, change path to the newfile and call do_GET on it
+            '''
             self.path = '/newfile.html'
-            print(self.path)
-            print(self)
-            
+
         SimpleHTTPRequestHandler.do_GET(self)
 
 
