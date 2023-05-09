@@ -1,0 +1,95 @@
+<html>
+
+    <head>
+        <title>todo-list</title>
+
+        <style>
+            .item {
+                cursor: pointer;
+            }
+
+            .done {
+                text-decoration: line-through;
+            }
+        </style>
+
+    </head>
+
+    <body>
+
+        <input type="text" id="new-item"><br>
+        <button id="add-item">Add</button><br>
+
+        <div id="items">
+
+        </div>
+
+        <script>
+            let items = [];
+
+            const itemsKey = 'todo-list';
+
+            function addClickListener(elm) {
+                elm.addEventListener('click', (evt) => {
+                    //console.log(evt);
+                    let itemElm = evt.target;
+                    if (itemElm.classList.contains('done'))
+                        itemElm.classList.remove('done');
+                    else
+                        itemElm.classList.add('done');
+                });
+            }
+
+            function createItemElement(itemName) {
+                let paraElm = document.createElement('p');
+                let textElm = document.createTextNode(itemName);
+                paraElm.append(textElm);
+                paraElm.classList.add('item');
+                document.querySelector('#items').append(paraElm);
+                addClickListener(paraElm);
+            }
+
+            function addItem(itemName) {
+                // append to Array
+                items.push(itemName);
+
+                // save to localStorage
+                localStorage.setItem(itemsKey, JSON.stringify(items));
+            }
+
+            document.querySelectorAll('.item').forEach( (elm) => {
+                addClickListener(elm);
+            } );
+
+            document.querySelector('#add-item').addEventListener('click', (evt) => {
+                const itemBox = document.querySelector('#new-item');
+                let itemName = itemBox.value;
+                createItemElement(itemName);
+                addItem(itemName);
+                itemBox.value = '';
+            });
+
+            // Load items from localStorage
+            function loadItems() {
+                let itemString = localStorage.getItem(itemsKey);
+
+                // If we have a string
+                if (itemString) {
+                    console.log('loading items');
+
+                    // Turn string into json object
+                    items = JSON.parse(itemString)
+                    items.forEach( (itemName) =>  {
+                        createItemElement(itemName);
+                    });
+                }
+
+            }
+
+            document.body.onload = loadItems;
+            //document.body.onload = loadItems();
+        </script>
+
+    </body>
+
+</html>

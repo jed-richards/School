@@ -1,0 +1,12 @@
+{% macro navbar_css() %}
+    <link href="{{ url_for('static', filename='css/navbar.css') }}" rel="stylesheet"></link>
+{% endmacro %}
+
+
+{% macro navbar(nav_items) %}
+    <nav class="navbar">
+        {% for name, link in nav_items %}
+            <a class='navbar_item' href="{{ link }}">{{ name.capitalize() }}</a>
+        {% endfor %}
+    </nav>
+{% endmacro %}

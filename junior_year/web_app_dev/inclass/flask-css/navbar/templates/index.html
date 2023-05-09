@@ -1,0 +1,28 @@
+{% from 'navbar_macros.html' import navbar, navbar_css %}
+
+<html>
+    <head>
+        <title>Navbar Test</title>
+
+      <!-- UNCOMMENT FOR INCLUDING CUSTOM CSS
+      <link href="css/site.css" rel="stylesheet"></link>
+      -->
+
+        {{ navbar_css() }}
+
+    </head>
+
+    <body>
+        <h1>Company Image here</h1>
+
+        {{ navbar([
+            ('Home', url_for('index')),
+            ('BeaverNet', 'https://beavernet.bvu.edu/'),
+            ('Not RickRoll', 'https://youtube.com/'),
+        ]) }}
+
+        <h2>Content goes here.</h2>
+
+    </body>
+
+</html>

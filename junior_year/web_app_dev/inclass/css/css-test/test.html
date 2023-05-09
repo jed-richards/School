@@ -1,0 +1,61 @@
+<html>
+    <head>
+        <title>Trying out the CSS Box Model</title>
+        
+        <style>
+            /* Tag Selector */
+            body {
+                background-color: purple;
+            }
+
+            /* Class Selector */
+            .nav-button {
+                background-color: orange;
+                /* color: white; */
+                padding: 4px 8px;
+                border: 2px solid black;
+                margin: 0px 5px;
+            }
+
+            /* Pseudoelement selector */
+            .nav-button:hover {
+                color: orange;
+                background-color: black;
+            }
+
+            /* Class Selector */
+            .fancy {
+                background-color: #f5e942;
+
+                /* Same as above */
+                /* background-color: rgb(245,233,66); */
+            }
+
+            /* Pseudoelement selector */
+            .fancy:hover {
+                color: yellow;
+                background-color: black;
+                padding: 50px;
+                font-size: 400pt;
+            }
+
+        </style>
+
+    </head>
+
+    <body>
+
+        <div id="nav" class="container">
+
+            <span class="nav-button">Home</span>
+            <span class="nav-button">About Us</span>
+            <span class="nav-button">Contact Us</span>
+            <span class="nav-button">Not a Rickroll</span>
+
+            <span class="nav-button fancy">Fancy Button</span>
+            
+        </div>
+
+    </body>
+
+</html>

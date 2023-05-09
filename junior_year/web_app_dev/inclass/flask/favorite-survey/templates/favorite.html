@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Favorite BVU Community Member Survey</title>
+    </head>
+
+    <body>
+
+        <form method="POST" action="{{ url_for('process_form') }}">
+            <label for="full_name">Full Name:</label>
+            <input type="text" name="full_name"><br>
+            <br>
+            <label for="person_type">What are you:</label>
+            <input type="radio" name="person_type" value="student"> Student<br>
+            <input type="radio" name="person_type" value="faculty"> Faculty<br>
+            <input type="radio" name="person_type" value="staff"> Staff<br>
+            <input type="radio" name="person_type" value="freeloader"> Freeloader<br>
+            <br>
+            <label for="favorite_person">Favorite BVU Community Member:</label>
+            <input type="text" name="favorite_person"><br>
+            <br>
+            <input type="submit" value="Submit">
+        </form>
+
+    </body>
+
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>jq-intro</title>
+      <!-- UNCOMMENT FOR INCLUDING CUSTOM CSS
+      <link href="css/site.css" rel="stylesheet"></link>
+      -->
+    </head>
+
+    <body>
+
+        <div id="main-content">
+            <input id="message" type="text"><br>
+            <button id="add-message-button">Add Message</button>
+            <button id="clicky-button">Click Me</button>
+
+            <p class="info">This message is very infomative.</p>
+            <p class="info">This message is very important.</p>
+            <p class="alert">This message warns of you impending DOOM!</p>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+
+        <script>
+            $(document).ready(function() {
+                // Once the whole document is loaded, now we can run our
+                // jQuery code.
+                
+                $('#clicky-button').click(function() {
+                    // This happens when clicky-button is clicked.
+                    //console.log('Oooo... that tickles.');
+                    $('p.info').css('background-color', 'papayaWhip');
+                    $('p.alert').css('background-color', 'red').slideUp(2000).slideDown(2000).click(function() {
+                        alert('Pay attention! There is a warning.');
+                    });
+                });
+
+                $('#add-message-button').click(function() {
+                    let myMessage = $('#message')[0].value;
+                    $('#main-content').append('<p class="info">' + myMessage + '</p>');
+                });
+            });
+        </script>
+
+    </body>
+
+</html>

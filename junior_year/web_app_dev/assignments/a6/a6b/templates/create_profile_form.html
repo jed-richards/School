@@ -1,0 +1,49 @@
+{% extends "site.html" %}
+
+{% block title %}Create Profile{% endblock %}
+
+{% block head %}
+{{ super() }}
+
+<style>
+body {
+  margin: 6px;
+}
+</style>
+
+{% endblock %}
+
+{% block navigation %}
+{% endblock %}
+
+{% block content %}
+
+{% if messages %}
+<ul id="messages" class="alert alert-danger" role="alert">
+  {% for message in messages %}
+  <li>{{ message }}</li>
+  {% endfor %}
+</ul>
+{% endif %}
+
+<form action="{{ url_for('create_profile') }}" method="POST" enctype="multipart/form-data">
+  <div class="mb-3">
+    <label for="username" class="form-label">Username</label>
+    <input class="form-control" type="text" id="username" name="username">
+  </div>
+  <div class="mb-3">
+    <label for="password" class="form-label">Password</label>
+    <input class="form-control" type="password" id="password" name="password">
+  </div>
+  <div class="mb-3">
+    <label for="email" class="form-label">Email</label>
+    <input class="form-control" type="email" id="email" name="email">
+  </div>
+  <div class="mb-3">
+    <label for="image" class="form-label">Profile Picture</label>
+    <input class="form-control" type="file" id="image" name="image">
+  </div>
+  <button type="submit" class="btn btn-primary mb-3">Create Profile</button>
+</form>
+
+{% endblock %}

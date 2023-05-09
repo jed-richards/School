@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>domfun</title>
+    </head>
+
+    <body>
+
+        <button id="do-it">Do-It</button><br>
+
+        <input type="text" id="text-output"><br>
+
+        <script>
+            document.querySelector('#do-it').addEventListener(
+                'click', 
+                () => {
+                    //alert('Button was clicked');
+                    document.querySelector('#text-output').value = 'Hi, there people!';
+                }
+            );
+        </script>
+
+    </body>
+
+</html>

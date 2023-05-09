@@ -1,0 +1,38 @@
+<html>
+
+<head>
+    <title>simple</title>
+
+    <style>
+        /* Talk CSS */
+    </style>
+</head>
+
+<body>
+
+    <p>Here is our simple test page</p>
+
+    <script>
+        let cart = {
+            contents: [],
+            add: function(item) {
+                this.contents.push(item);
+            },
+            total: function() {
+                let totalCost = 0;
+                this.contents.forEach(function(item) {
+                    totalCost = totalCost + item.cost;
+                });
+
+                return totalCost;
+            }
+        };
+
+        cart.add( { name: 'tank', cost: 50000 } );
+        cart.add( { name: 'donut', cost: 1 } );
+        console.log('You owe $' + cart.total());
+
+    </script>
+</body>
+
+</html>

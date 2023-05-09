@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Image Upload</title>
+    </head>
+
+    <body>
+
+        <p>
+            <a href="{{ url_for('get_all_images') }}">Images</a>
+        </p>
+
+        <form enctype="multipart/form-data" method="POST" 
+            action="{{ url_for('upload_image') }}">
+            
+            Title: <input type="text" name="thetitle"><br> 
+            Image: <input type="file" name="thefile"><br> 
+            <input type="submit" value="Upload">
+
+        </form>
+    </body>
+
+</html>

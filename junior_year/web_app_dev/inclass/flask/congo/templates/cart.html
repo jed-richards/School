@@ -1,0 +1,20 @@
+{% extends "site.html" %}
+
+{% block title %}Cart{% endblock %}
+
+{% block content %}
+
+{% if message %}
+<strong>{{ message }}</strong>
+{% endif %}
+
+
+{% from "cart_macro.html" import show_cart %}
+
+{{ show_cart(cart) }}
+
+
+
+
+{% endblock %}
+

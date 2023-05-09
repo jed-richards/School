@@ -1,0 +1,25 @@
+{% extends "site.html" %}
+
+{% block title %}Order History{% endblock %}
+
+{% block content %}
+
+{% if orders %}
+
+    {% for line in orders %}
+        {% if line == '\n' %}
+            <br>
+        {% else %}
+        {{ line }} <br>
+        {% endif %}
+    {% endfor %}
+
+{% else %}
+<h2>There are no orders. Go buy something <a href="{{ url_for('browse') }}">here</a>
+    .
+</h2>
+{% endif %}
+
+
+{% endblock %}
+

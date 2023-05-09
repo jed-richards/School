@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>User: {{ user.username }}</title>
+    </head>
+
+    <body>
+        <img src="{{ url_for('static', filename='img/default.jpg') }}">
+
+        <p>Username: {{ user.username }}</p>
+        <p>Email: <a href="mailto:{{ user.email }}">{{ user.email }}</a></p>
+
+    </body>
+
+</html>

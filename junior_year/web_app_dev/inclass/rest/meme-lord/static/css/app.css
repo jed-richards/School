@@ -1,0 +1,20 @@
+
+body {
+    padding: 8px;
+}
+
+.post > h1 {
+    background-color: lightBlue;
+    padding: 6px;
+    font-weight: bold;
+}
+
+.post > img {
+    padding-left: 4px;
+}
+
+.post {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+

@@ -1,0 +1,25 @@
+.navbar {
+    display: flex; 
+    flex-direction: row;
+    justify-content: flex-start;
+    background-color: chartreuse;
+    gap: 10px;
+    padding: 6px;
+    border: 1px solid black;
+}
+
+.navbar_item {
+    background-color: papayawhip;
+    color: black;
+    border: 1px solid black;
+    padding: 3px;
+}
+
+a.navbar_item {
+    /* turn of underline on link */
+    text-decoration: none;
+}
+
+.navbar_item:hover {
+    background-color: peachpuff;
+}

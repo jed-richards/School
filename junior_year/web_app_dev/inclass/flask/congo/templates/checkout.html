@@ -1,0 +1,50 @@
+{% extends "site.html" %}
+
+{% block title %}Checkout{% endblock %}
+
+{% block content %}
+
+{% if cart %}
+<table>
+
+    <thead>
+        <tr>
+            <th>Item</th>
+            <th>Quantity</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for item in cart %}
+        <tr>
+            <td>{{ item.capitalize() }}</td>
+            <td>{{ cart[item] }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+
+</table>
+
+<br>
+<form method="POST" action="{{ url_for('checkout') }}">
+
+    <label for="email">Email: </label>
+    <input type="text" name="email"><br>
+
+    <label for="credit_card">Credit Card Number: </label>
+    <input type="text" name="credit_card"><br>
+
+    <input type="submit" value="Place Order"><br>
+
+</form>
+    
+
+{% else %}
+<h2>Cart is empty. Go buy something <a href="{{ url_for('browse') }}">here</a>
+    .
+</h2>
+{% endif %}
+
+
+{% endblock %}
+

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>templates/index</title>
+    </head>
+
+    <body>
+
+        <img src="{{ url_for('static', filename='img/leprechaun.jpg') }}">
+
+        <br>
+
+        <button id="fortune-button">Get new fortune!</button>
+
+        <hr>
+        <p id="fortune-text"></p>
+        <hr>
+
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+
+        <script>
+            function insertFortune(text) {
+                $('#fortune-text').html(text);
+                console.log(text);
+            }
+
+            function error(text) {
+                insertFortune('<span style="color: red">' + text + '</span>');
+            }
+
+            $(document).ready(function() {
+                $('#fortune-button').click(function() {
+                    $.ajax('/fortune/', { 
+                        method: 'GET',
+                        dataType: 'text',
+                        success: insertFortune,
+                        error: error
+                    });
+                });
+            });
+        </script>
+    </body>
+
+</html>

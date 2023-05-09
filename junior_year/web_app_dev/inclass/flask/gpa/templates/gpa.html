@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Honors!</title>
+    </head>
+
+    <body>
+        {% if gpa >= 3.9 %}
+            <p>Summa Cum Laude</p>
+        {% elif gpa >= 3.75 %}
+            <p>Magna Cum Laude</p>
+        {% elif gpa >= 3.5 %}
+            <p>Cum Laude</p>
+        {% else %}
+            <p>Sorry...</p>
+        {% endif %}
+    </body>
+
+</html>

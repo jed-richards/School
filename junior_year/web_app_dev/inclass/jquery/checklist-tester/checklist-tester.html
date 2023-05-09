@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>checklist-tester</title>
+    </head>
+
+    <body>
+        <h1>Fears</h1>
+
+        <ul id="fears-list">
+            <li>Iguana</li>
+            <li>Drowning</li>
+            <li>Falling</li>
+            <li>Heights</li>
+            <li>Clowns</li>
+            <li>Math</li>
+            <li>Calculus</li>
+            <li>People who don't like math</li>
+            <li>People who use the word "rad"</li>
+            <li>People who don't use the word "rad"</li>
+        </ul>
+
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script> 
+
+        <script src="jq-checklist.js"></script>
+
+        <script>
+            $(document).ready(function() {
+               $('#fears-list').checklist(); 
+            });
+        </script>
+
+    </body>
+
+</html>

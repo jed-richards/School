@@ -1,0 +1,9 @@
+p {
+  color: #00ff05;
+  margin: 0;
+  border: 5px solid black;
+  width: fit-content;
+  padding-left: 5px;
+  padding-right: 5px;
+  background-color: #6f307882;
+}

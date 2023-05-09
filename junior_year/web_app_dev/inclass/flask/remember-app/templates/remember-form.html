@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Remember Something</title>
+    </head>
+
+    <body>
+
+        <form method="POST" action="{{ url_for('remember') }}">
+        <form method="POST" action="{{ url_for('remember') }}">
+
+            <label for="thing">What do you want to remember: </label><br>
+            <input type="text" name="thing"><br>
+            <input type="submit" value="Remember!"><br>
+
+        </form>
+
+            <label for="thing">What do you want to remember: </label><br>
+            <input type="text" name="thing"><br>
+            <input type="submit" value="Remember!"><br>
+
+        </form>
+        
+        <p>Or, perhaps you'd like to 
+            <a href="{{ url_for('forget') }}">Forget</a>
+        </p>
+
+    </body>
+
+</html>

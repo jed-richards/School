@@ -1,0 +1,17 @@
+.desc-item {
+    background-color: #4488ff;
+    padding: 8px;
+}
+
+.desc-name {
+    color: white;
+    cursor: pointer;
+}
+
+.desc-value {
+    color: black;
+    display: none;
+    font-style: italic;
+    padding-top: 10px;
+    padding-bottom: 20px;
+}

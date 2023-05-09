@@ -1,0 +1,2 @@
+1: make remove item funtion
+2: add click listener on button

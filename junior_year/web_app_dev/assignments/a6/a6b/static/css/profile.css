@@ -1,0 +1,52 @@
+#profile_div {
+  display: inline-flex;
+  gap: 20px;
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+#profile {
+  border: 5px solid #3500ff;
+  width: 260px;
+  height: 314px;
+}
+
+#profile p {
+  border: 2px solid black;
+  width: 250px;
+  background-color: white;
+  color: #4a1b48; /*dark purple*/
+  margin: 0;
+}
+
+#posts {
+  display: inline-flex;
+  flex-direction: column;
+}
+
+.post {
+  background-color: #000a716b;
+  border: 5px solid #ae053dbf;
+  padding: 5px;
+  width: 20em;
+  color: #ffffff;
+  margin-bottom: 1rem;
+}
+
+p.profiles-liked {
+  font-size: medium;
+  border: 2px solid deepskyblue;
+  width: fit-content;
+  padding: 2px 5px 2px 5px;
+  background-color: #c532ac87;
+  color: black;
+}
+
+h5.modal-title {
+    font-size: 1.25rem;
+    color: black;
+}
+
+.modal-content {
+  background-color: #5553a8;
+}

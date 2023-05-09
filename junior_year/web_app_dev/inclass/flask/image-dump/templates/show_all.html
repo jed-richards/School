@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>All Images</title>
+    </head>
+
+    <body>
+
+    {% if fileNames %}
+        {% for file in fileNames %}
+        <p>View <a href="{{ url_for('static', filename='uploads/'+file) }}">{{ file }}.</a></p>
+        {% endfor %}
+    {% else %}
+        <p>There are no images.</p>
+    {% endif %}
+
+    </body>
+
+</html>

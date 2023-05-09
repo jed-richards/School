@@ -1,0 +1,36 @@
+.navbar {
+  background-color: blueviolet;
+}
+
+.navbar-nav {
+  color: coral;
+  border: 1px solid yellowgreen;
+  border-radius: 15em;
+  padding: 3px;
+}
+
+a.nav-link {
+  color: maroon;
+  border: 1px solid orchid;
+  border-radius: 15em;
+}
+
+.form-label {
+  color: blueviolet;
+}
+
+.form-control {
+  width: 20%; 
+  border: 2px solid black;
+}
+
+body {
+  background-image: url('/static/img/site/zroom.gif'); 
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-attachment: fixed;
+}
+
+
+
+

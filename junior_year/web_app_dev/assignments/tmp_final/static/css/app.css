@@ -1,0 +1,27 @@
+div#container {
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: start;
+  grid-gap: 10px;
+}
+
+.computer {
+    border: 2px solid black;
+    width: 15em;
+    height: 10em;
+    padding: 10px
+}
+
+.computer[state="true"] {
+  background-color: red;
+}
+
+.computer[state="false"] {
+  background-color: green;
+}
+
+.computer-contents {
+  display: grid;
+  justify-content: center;
+}
+

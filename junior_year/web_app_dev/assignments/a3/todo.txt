@@ -1,0 +1,9 @@
+Modify todo-list.html so that when items are created/loaded, they have a button
+labeled 'X' next to them.  The button should remove the item from the TODO list
+(both from the page and from the localStorage array).
+
+Additionally, you should add a "Clear" button next to the "Add" button that 
+clears the entire list.
+
+You will once again work with your teams from A2.  Only one member of your team
+needs to upload your HTML file

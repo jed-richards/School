@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+    {% block head %}
+    <head>
+        <title>C O N G O - {% block title %}{% endblock %}</title>
+    </head>
+    {% endblock %}
+
+    <body>
+
+        <div id='header-image'>
+            <img src="{{ url_for('static', filename='img/congo.png') }}">
+        </div>
+
+        {% block navigation %}
+        <p>
+            <a href="{{ url_for('browse') }}">Shop</a> |
+            <a href="{{ url_for('cart') }}">Cart</a> |
+            <a href="{{ url_for('checkout') }}">Checkout</a> |
+            <a href="{{ url_for('orders') }}">Orders</a>
+        </p>
+        {% endblock %}
+
+        {% block content %}
+        {% endblock %}
+
+    </body>
+
+</html>

@@ -1,0 +1,84 @@
+<html>
+    <head>
+        <title>simple</title>
+
+        <style>
+/* Talk CSS here*/
+        </style>
+
+    </head>
+
+    <body>
+
+        <p>Here is our simple test page.</p>
+
+        <script>
+            /* Talk JavaScript here */
+
+            // ------------------------- BASICS -------------------------------
+            let name = 'Jed';
+            const world = 'World';
+            // world = 'Planet' // this breaks the program because world 
+                                //is const
+            console.log('Hello, ' + name + '!')
+            console.log('Hello, ' + world + '!')
+            // ------------------------ END BASICS ----------------------------
+
+
+            // ------------------------ FUNCTIONS -----------------------------
+            /* typical function */
+            function yell(message) {
+                alert(message.toUpperCase());
+            }
+
+            /* Anonymous Funcion */
+            let scream = function(message) {
+                yell(message + ' Yarrrrgh!');
+            };
+
+            /* Arrow Function */
+            let ululate = (message) => {
+                yell(message + ' alalallalalalalalah!')
+            };
+
+            /* Get arguments of function. Every function has arguments Array */
+            function addUp() {
+                let sum = 0;
+                for (let i=0; i<arguments.length; i++) {
+                    sum += arguments[i];
+                }
+                return sum;
+            }
+
+            //yell('Greetings Mythical Being');
+            //scream('Greetings Mythical Being');
+            //ululate('Greetings Mythical Being');
+
+            console.log(addUp(3, 4, 5));
+            console.log(addUp());
+            // ---------------------- END FUNCTIONS ---------------------------
+
+
+            // ------------------------ OBJECTS -------------------------------
+            let bear = {
+                name: 'Carlos',
+                weight: 600,
+                cocaine: true,
+                // arrow functions can't use this operator
+                // eat: (thing) => {
+                eat: function(thing) {
+                    console.log('Yum. The bear has eaten ' + thing + '.');
+                    this.weight = this.weight + 2;
+                },
+            };
+
+            bear.eat('cottage cheese');
+            console.log(bear.name + ' now weighs ' + bear.weight + ' lbs.');
+            // ---------------------- END OBJECTS -----------------------------
+
+
+
+        </script>
+    </body>
+
+</html>

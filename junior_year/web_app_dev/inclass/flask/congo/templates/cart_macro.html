@@ -1,0 +1,35 @@
+<!--This creates a macro (like a function)-->
+{% macro show_cart(cart) %}
+
+{% if cart %}
+<table>
+
+    <thead>
+        <tr>
+            <th>Item</th>
+            <th>Quantity</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for item in cart %}
+        <tr>
+            <form method="POST" action="{{ url_for('delete') }}">
+                <input type="hidden" name="item" value="{{ item }}">
+                <td>{{ item.capitalize() }}</td>
+                <td>{{ cart[item] }}</td>
+                <td><input type="submit" value="Remove Item"></td>
+            </form>
+        </tr>
+        {% endfor %}
+    </tbody>
+
+</table>
+
+{% else %}
+<h2>Cart is empty. Go buy something <a href="{{ url_for('browse') }}">here</a>
+    .
+</h2>
+{% endif %}
+
+{% endmacro %}

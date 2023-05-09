@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Thanks. Remembering...</title>
+    </head>
+
+    <body>
+    
+        <h1>Thanks!</h1>
+
+        {% if thing %}
+        <p>Cool. I will henceforth remember {{ thing }}.</p>
+        {% else  %}
+        <p>Cool. I shall forget the thing we were remembering.
+            What was it again?</p>
+        {% endif %}
+
+        <p>Want to see a cool <a href="{{ url_for('advert') }}">advertisement</a>?</p>
+
+        <p><a href="{{ url_for('remember_form') }}">Change</a> what you need to remember.</p>
+
+    </body>
+
+</html>

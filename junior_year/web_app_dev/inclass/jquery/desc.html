@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Descriptions</title>
+      <!-- UNCOMMENT FOR INCLUDING CUSTOM CSS
+      <link href="css/site.css" rel="stylesheet"></link>
+      -->
+    </head>
+
+    <body>
+
+        <div id="desc-item">
+            <div class="desc-name">
+                Dr. Shepherd
+            </div>
+            <div class="desc-value">
+                Guy who disrespects Kaden (actually, he picks on Jed more).
+            </div>
+        </div>
+
+        <div id="desc-item">
+            <div class="desc-name">
+                Edson Hall
+            </div>
+            <div class="desc-value">
+                Old-Smelling Gym
+            </div>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+
+        <script>
+            $(document).ready(function() {
+                let edsonElm = $('.desc-name')[1]; // this returns a DOM element
+                $($(edsonElm).siblings()[0]).text('Music building');
+            });
+        </script>
+
+    </body>
+
+</html>

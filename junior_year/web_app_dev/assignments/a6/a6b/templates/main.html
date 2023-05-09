@@ -1,0 +1,32 @@
+{% extends "site.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block head %}
+{{ super() }} 
+
+  {% block css %}
+  <link href="{{ url_for('static', filename='css/main.css') }}" rel="stylesheet"></link>
+  {% endblock %}
+
+{% endblock %}
+
+{% block content %}
+
+<div id="profile_id" profile_id="{{ user.id }}" active_profile_id="{{ user.id }}">
+  <p class="main-text">Welcome, {{ user.username }}!</p>
+
+  <form id="post-form">
+    <div class="mb-3 create-post-form">
+      <label for="content" class="form-label">Create New Post</label>
+      <input class="form-control" type="text" id="content" name="content">
+    </div>
+    <button id="post-btn" type="submit" class="btn btn-primary mb-3">Create Post</button>
+  </form>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="/static/js/main_page.js"></script>
+{% endblock %}

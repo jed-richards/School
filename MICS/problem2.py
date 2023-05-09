@@ -1,0 +1,265 @@
+
+# positions = [3,8,14,20,25,31,37,42,48,53,59,65,70,76,82,87,90]
+positions = [0,3,8,14,20,25,31,37,42,48,53,59,65,70,76,82,87]
+left = {
+        0:'N',
+        1:'N',
+        2:'N',
+        3:'NtW',
+        4:'NtW',
+        5:'NtW',
+        6:'NtW',
+        7:'NtW',
+        8:'NbW',
+        9:'NbW',
+        10:'NbW',
+        11:'NbW',
+        12:'NbW',
+        13:'NbW',
+        14:'NNWtN',
+        15:'NNWtN',
+        16:'NNWtN',
+        17:'NNWtN',
+        18:'NNWtN',
+        19:'NNWtN',
+        20:'NNW',
+        21:'NNW',
+        22:'NNW',
+        23:'NNW',
+        24:'NNW',
+        25:'NNWtW',
+        26:'NNWtW',
+        27:'NNWtW',
+        28:'NNWtW',
+        29:'NNWtW',
+        30:'NNWtW',
+        31:'NWbN',
+        32:'NWbN',
+        33:'NWbN',
+        34:'NWbN',
+        35:'NWbN',
+        36:'NWbN',
+        37:'NWtN',
+        38:'NWtN',
+        39:'NWtN',
+        40:'NWtN',
+        41:'NWtN',
+        42:'NW',
+        43:'NW',
+        44:'NW',
+        45:'NW',
+        46:'NW',
+        47:'NW',
+        48:'NWtW',
+        49:'NWtW',
+        50:'NWtW',
+        51:'NWtW',
+        52:'NWtW',
+        53:'NWbW',
+        54:'NWbW',
+        55:'NWbW',
+        56:'NWbW',
+        57:'NWbW',
+        58:'NWbW',
+        59:'WNWtN',
+        60:'WNWtN',
+        61:'WNWtN',
+        62:'WNWtN',
+        63:'WNWtN',
+        64:'WNWtN',
+        65:'WNW',
+        66:'WNW',
+        67:'WNW',
+        68:'WNW',
+        69:'WNW',
+        70:'WNWtW',
+        71:'WNWtW',
+        72:'WNWtW',
+        73:'WNWtW',
+        74:'WNWtW',
+        75:'WNWtW',
+        76:'WbN',
+        77:'WbN',
+        78:'WbN',
+        79:'WbN',
+        80:'WbN',
+        81:'WbN',
+        82:'WtN',
+        83:'WtN',
+        84:'WtN',
+        85:'WtN',
+        86:'WtN',
+        87:'W',
+        88:'W',
+        89:'W',
+        90:'W',
+
+        }
+
+right = {
+        0:'N',
+        1:'N',
+        2:'N',
+        3:'NtE',
+        4:'NtE',
+        5:'NtE',
+        6:'NtE',
+        7:'NtE',
+        8:'NbE',
+        9:'NbE',
+        10:'NbE',
+        11:'NbE',
+        12:'NbE',
+        13:'NbE',
+        14:'NNEtN',
+        15:'NNEtN',
+        16:'NNEtN',
+        17:'NNEtN',
+        18:'NNEtN',
+        19:'NNEtN',
+        20:'NNE',
+        21:'NNE',
+        22:'NNE',
+        23:'NNE',
+        24:'NNE',
+        25:'NNEtE',
+        26:'NNEtE',
+        27:'NNEtE',
+        28:'NNEtE',
+        29:'NNEtE',
+        30:'NNEtE',
+        31:'NEbN',
+        32:'NEbN',
+        33:'NEbN',
+        34:'NEbN',
+        35:'NEbN',
+        36:'NEbN',
+        37:'NEtN',
+        38:'NEtN',
+        39:'NEtN',
+        40:'NEtN',
+        41:'NEtN',
+        42:'NE',
+        43:'NE',
+        44:'NE',
+        45:'NE',
+        46:'NE',
+        47:'NE',
+        48:'NEtE',
+        49:'NEtE',
+        50:'NEtE',
+        51:'NEtE',
+        52:'NEtE',
+        53:'NEbE',
+        54:'NEbE',
+        55:'NEbE',
+        56:'NEbE',
+        57:'NEbE',
+        58:'NEbE',
+        59:'ENEtN',
+        60:'ENEtN',
+        61:'ENEtN',
+        62:'ENEtN',
+        63:'ENEtN',
+        64:'ENEtN',
+        65:'ENE',
+        66:'ENE',
+        67:'ENE',
+        68:'ENE',
+        69:'ENE',
+        70:'ENEtE',
+        71:'ENEtE',
+        72:'ENEtE',
+        73:'ENEtE',
+        74:'ENEtE',
+        75:'ENEtE',
+        76:'EbN',
+        77:'EbN',
+        78:'EbN',
+        79:'EbN',
+        80:'EbN',
+        81:'EbN',
+        82:'EtN',
+        83:'EtN',
+        84:'EtN',
+        85:'EtN',
+        86:'EtN',
+        87:'E',
+        88:'E',
+        89:'E',
+        90:'E'
+}
+
+#left = {
+#        3:'N',
+#        8:'NtW',
+#        14:'NbW',
+#        20:'NNWtN',
+#        25:'NNW',
+#        31:'NNWtW',
+#        37:'NWbN',
+#        42:'NWtN',
+#        48:'NW',
+#        53:'NWtW',
+#        59:'NWbW',
+#        65:'WNWtN',
+#        70:'WNW',
+#        76:'WNWtW',
+#        82:'WbN',
+#        87:'WtN',
+#        90:'W'
+#        }
+#
+#right = {
+#        3:'N',
+#        8:'NtE',
+#        14:'NbE',
+#        20:'NNEtN',
+#        25:'NNE',
+#        31:'NNEtE',
+#        37:'NEbN',
+#        42:'NEtN',
+#        48:'NE',
+#        53:'NEtE',
+#        59:'NEbE',
+#        65:'ENEtN',
+#        70:'ENE',
+#        76:'ENEtE',
+#        82:'EbN',
+#        87:'EtN',
+#        90:'E'
+#}
+
+def getIndex(degree):
+    #if degree in positions:
+    #    return degree
+
+    #for i in range(0,len(positions)):
+    #    if degree < positions[i]:
+    #        return positions[i]
+    #    if degree == positions[i]:
+    #        return positions[i+1]
+
+    pass
+
+n = int(input())
+
+cases = []
+count = 1
+
+for i in range(n):
+    c = input().split()
+    cases.append(c)
+
+count = 1
+for case in cases:
+    degree = int(case[0])
+    direction = case[4]
+    
+    #index = getIndex(degree)
+    if direction == 'right':
+        print(f'Case {count}: {right[degree]}')
+    if direction == 'left':
+        print(f'Case {count}: {left[degree]}')
+    
+    count+=1

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Advertisement</title>
+    </head>
+
+    <body>
+    
+        <h1>Ads! Oh no!</h1>
+
+        <hr>
+
+        {% if thing %}
+        <p>Don't forget to remember {{ thing }}.</p>
+        {% endif %}
+
+        <p><a href="{{ url_for('remember_form') }}">Change</a> what you need to remember.</p>
+
+    </body>
+
+</html>

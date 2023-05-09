@@ -1,0 +1,44 @@
+{% extends "site.html" %}
+
+{% block title %}Browse{% endblock %}
+
+{% block head %}
+{{ super() }}
+<!-- 
+    here is where we would insert special CSS or JavaScript for 'broswe' 
+-->
+{% endblock %}
+
+{% block content %}
+
+    {% if message %}
+    <strong>{{ message }}</strong>
+    {% endif %}
+
+    <form method="POST" action="{{ url_for('cart') }}">
+
+        <label for="item">Item:</label><br>
+        <select name="item">
+            <option value="coconut">Coconut</option>
+            <option value="drum">Drum</option>
+            <option value="ravioli">Ravioli (contents unknown)</option>
+            <option value="tank">Badonkadonk Tank</option>
+        </select>
+        <br>
+
+        <label for="quantity">Quantity:</label><br>
+        <select name="quantity">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+        </select>
+        <br>
+
+        <input type="submit" value="Add to Cart">
+
+    </form>
+
+{% endblock %}
+

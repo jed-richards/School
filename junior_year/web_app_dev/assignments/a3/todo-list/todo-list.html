@@ -1,0 +1,170 @@
+<html>
+
+    <head>
+        <title>todo-list</title>
+
+        <style>
+            .item {
+                cursor: pointer;
+            }
+
+            .done {
+                text-decoration: line-through;
+            }
+
+            /* Add style to remove buttons */
+            .remove-item {
+                cursor: pointer;
+                margin-right: 10px;
+                margin-top: 5px;
+                margin-bottom: 5px;
+                color: red;
+            }
+
+            ul {
+                padding-inline-start: 20px;
+                /*display: inline-table;*/
+            }
+
+
+            li {
+                float: left;
+                clear: both;
+            }
+
+        </style>
+
+    </head>
+
+    <body>
+        <h2>Your Todo-List</h2>
+
+        <input type="text" id="new-item"><br>
+        <button id="add-item">Add Item</button> | 
+        <button id="clear-items">Clear Items</button><br>
+
+        <div id="item-container">
+            <ul id="items" style="list-style-type:none">
+                <!-- Initially empty list -->
+            </ul>
+        </div>
+
+        <script>
+
+            // Create a local array to keep track of list items.
+            let items = [];
+            const itemsKey = 'todo-list';  // Constant localStorage key
+
+            // Toggle class done on/off
+            function addClickListener(elm) {
+                elm.addEventListener('click', (evt) => {
+                    let itemElm = evt.target;
+                    if (itemElm.classList.contains('done'))
+                        itemElm.classList.remove('done');
+                    else
+                        itemElm.classList.add('done');
+                });
+            }
+
+            // Remove item from local item array and update localStorage when
+            // remove button is clicked. Then reload page.
+            function addRemoveListener(elm) {
+                elm.addEventListener('click', (evt) => {
+                    let itemElm = elm.parentNode;
+                    let textKey = itemElm.childNodes[1].nodeValue;
+                    let index = items.indexOf(textKey);
+                    items.splice(index, 1);  // Remove 1 item at index
+                    localStorage.setItem(itemsKey, JSON.stringify(items));
+                    window.location.reload();
+                });
+            }
+
+            // Creates and returns html button element.
+            function createRemoveButton() { 
+                let removeButton = document.createElement('button');
+                let textElm = document.createTextNode("X");
+                removeButton.append(textElm);
+                removeButton.classList.add('remove-item');
+                
+                return removeButton;
+            }
+
+            // Creates list item with remove button.
+            function createItemElement(itemName) {
+                let paraElm = document.createElement('li');
+                let textElm = document.createTextNode(itemName);
+                let removeButton = createRemoveButton();
+                addRemoveListener(removeButton);
+                paraElm.appendChild(removeButton);
+                paraElm.append(textElm);
+                paraElm.classList.add('item');
+                document.querySelector('#items').append(paraElm);
+                addClickListener(paraElm);
+            }
+
+            // Add item to local array and then update localStorage.
+            function addItem(itemName) {
+                items.push(itemName);
+                localStorage.setItem(itemsKey, JSON.stringify(items));
+            }
+
+            // Add click listener to each element of class item
+            document.querySelectorAll('.item').forEach( (elm) => {
+                addClickListener(elm);
+            });
+
+            // Add button functionality. Only adds item if the item is not an
+            // empty string.
+            document.querySelector('#add-item').addEventListener('click', (evt) => {
+                const itemBox = document.querySelector('#new-item');
+                let itemName = itemBox.value;
+                if (!itemName == "") {
+                    createItemElement(itemName);
+                    addItem(itemName);
+                    itemBox.value = '';
+                }
+            });
+
+            // Clear button functionality. Remove itemsKey from localStorage 
+            // and reload page.
+            document.querySelector('#clear-items').addEventListener('click', (evt) => {
+                localStorage.removeItem(itemsKey);
+                window.location.reload();
+            });
+
+            // Load items from localStorage.
+            function loadItems() {
+                let itemString = localStorage.getItem(itemsKey);
+
+                // If we have a string
+                if (itemString) {
+                    console.log('loading items');
+
+                    // Turn string into json object
+                    items = JSON.parse(itemString)
+                    items.forEach( (itemName) =>  {
+                        createItemElement(itemName);
+                    });
+                }
+            }
+
+            document.body.onload = loadItems;
+        </script>
+
+    </body>
+
+</html>
+
+<!-- 
+           __,__
+   .--.  .-"     "-.  .--.
+  / .. \/  .-. .-.  \/ .. \
+ | |  '|  /   Y   \  |'  | |
+ | \   \  \ 0 | 0 /  /   / |
+  \ '- ,\.-"`` ``"-./, -' /
+   `'-' /_   ^ ^   _\ '-'`
+       |  \._   _./  |     
+       \   \ `~` /   /   (MOO)
+        '._ '-=-' _.'
+           '~---~'
+-->
